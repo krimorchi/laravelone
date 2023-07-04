@@ -49,7 +49,7 @@ class PostController extends Controller
         unset($data['tags']);
         $post = Post::create($data);
 
-        $post->tags()->attach($tags); 
+        $post->tags()->attach($tags);  //лучше использовать этот вариант
 
         // foreach($tags as $tag){
         //     PostTag::firstOrCreate([
