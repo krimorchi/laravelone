@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MySecondPlaceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,41 +14,6 @@ use App\Http\Controllers\MySecondPlaceController;
 */
 
 
-
-Route::get('/second', [MySecondPlaceController::class, 'secondIndex']
-)->name('secondIndex');
-
-Route::get('/post', 'App\Http\Controllers\PostController@findById'
-);
-
-Route::get('/posts/titles', 'App\Http\Controllers\PostController@findAllTitles'
-);
-
-Route::get('/post/title', 'App\Http\Controllers\PostController@findTitleById'
-);
-
-Route::get('/posts/morelikes', 'App\Http\Controllers\PostController@findWhereMoreLikes'
-);
-
-Route::get('/posts/create', 'App\Http\Controllers\PostController@create'
-);
-
-Route::get('/posts/update', 'App\Http\Controllers\PostController@update'
-);
-
-Route::get('/posts/delete', 'App\Http\Controllers\PostController@delete'
-);
-
-Route::get('/posts/restore', 'App\Http\Controllers\PostController@restore'
-);
-
-Route::get('/posts/firstOrCreate', 'App\Http\Controllers\PostController@firstOrCreate'
-);
-
-Route::get('/posts/updateOrCreate', 'App\Http\Controllers\PostController@updateOrCreate'
-);
-
-
 // MAIN ROUTES
 
 Route::get('/', 'App\Http\Controllers\MainController@main'
@@ -58,32 +22,42 @@ Route::get('/', 'App\Http\Controllers\MainController@main'
 Route::get('/main', 'App\Http\Controllers\MainController@main'
 );
 
-Route::get('/posts', 'App\Http\Controllers\PostController@index'
-)->name('post.index');
+// POSTS ROUTES
 
-Route::get('/posts/create', 'App\Http\Controllers\PostController@create'
-);
+Route::group(['namespace' => '\App\Http\Controllers\Post'], function() {
+    Route::get('/posts', 'IndexController'
+    )->name('post.index');
 
-Route::post('/posts', 'App\Http\Controllers\PostController@store'
-)->name('post.store');
+    Route::get('/posts/create', 'CreateController'
+    );
 
-Route::get('/posts/{post}', 'App\Http\Controllers\PostController@show'
-)->name('post.show');
+    Route::post('/posts', 'StoreController'
+    )->name('post.store');
 
-Route::get('/posts/{post}/edit', 'App\Http\Controllers\PostController@edit'
-)->name('post.edit');
+    Route::get('/posts/{post}', 'ShowController'
+    )->name('post.show');
 
-Route::patch('/posts/{post}', 'App\Http\Controllers\PostController@update'
-)->name('post.update');
+    Route::get('/posts/{post}/edit', 'EditController'
+    )->name('post.edit');
 
-Route::delete('/posts/{post}', 'App\Http\Controllers\PostController@destroy'
-)->name('post.delete');
+    Route::patch('/posts/{post}', 'UpdateController'
+    )->name('post.update');
 
-Route::get('/posts/restore', 'App\Http\Controllers\PostController@restore'
-);
+    Route::delete('/posts/{post}', 'DestroyController'
+    )->name('post.delete');
+
+    Route::get('/posts/restore', 'RestoreController'
+    );
+});
+
+
+
+// ABOUT ROUTES
 
 Route::get('/about', 'App\Http\Controllers\AboutController@about'
 );
+
+// CONTACTS ROUTES
 
 Route::get('/contacts', 'App\Http\Controllers\ContactsController@contacts'
 );

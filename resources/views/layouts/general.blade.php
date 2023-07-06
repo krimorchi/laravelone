@@ -22,7 +22,7 @@
                                 </div>
                         </div>
                 </div>
-              </nav>
+        </nav>
         @yield('main')
         @yield('posts')
         @yield('create')
