@@ -22,7 +22,7 @@ class IndexController extends BaseController
         // $category = Category::find(2);
         // dd($category->posts);
 
-        $posts = Post::all();
+        $posts = Post::paginate(12);
         return view('post.index', compact('posts'));
     }
 

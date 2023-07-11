@@ -32,6 +32,7 @@
     justify-content: space-around;
     flex-wrap: wrap;
     margin-bottom: 100px;
+    clear:both;
 }
 
 .card {
@@ -94,6 +95,12 @@
     bottom: 10px;
 }
 
+/* POSTS/PAGINATION */
+
+.pagination{
+    justify-content: center;
+}
+
 /* Main */
 
 .mainword {
@@ -117,3 +124,4 @@
 .form-group {
     margin-top: 2vh;
 }
+

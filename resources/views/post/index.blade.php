@@ -2,6 +2,7 @@
 @section('posts')
     <div class="container">
         <div class="posts">
+            {{-- Используется оператор if, чтобы шаблон понимал, его берут для отображения 1 поста или для всех постов --}}
             @if (isset($post))
             <div class="card" style="width: 18rem;">
                 <div class="title">{{$post->title}}</div>
@@ -19,7 +20,7 @@
             </div>
             
 
-            @elseif(isset($posts))
+            @elseif(isset($posts)) 
                 @foreach($posts as $post)
                     <a href=" {{ route('post.show', $post->id) }} ">
                         <div class="card" style="width: 18rem;">
@@ -31,7 +32,17 @@
                         </div>
                     </a>
                 @endforeach
+                
+
             @endif
+                
         </div>
+
+        @if(isset($posts))
+            <div class="pagination">
+                {{ $posts->links() }}
+            </div>
+
+        @endif
     </div>
 @endsection
