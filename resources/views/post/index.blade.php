@@ -40,7 +40,7 @@
 
         @if(isset($posts))
             <div class="pagination">
-                {{ $posts->links() }}
+                {{ $posts->withQueryString()->links() }}
             </div>
 
         @endif

@@ -31,7 +31,7 @@ Route::group(['namespace' => '\App\Http\Controllers\Post'], function() {
     Route::get('/posts/create', 'CreateController'
     );
 
-    Route::post('/posts', 'StoreController'
+    Route::post('/posts/store', 'StoreController'
     )->name('post.store');
 
     Route::get('/posts/{post}', 'ShowController'
