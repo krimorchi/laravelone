@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Post\IndexController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,7 +63,15 @@ Route::get('/about', 'App\Http\Controllers\AboutController@about'
 Route::get('/contacts', 'App\Http\Controllers\ContactsController@contacts'
 );
 
+// ADMIN LTE ROUTES
 
+Route::group(['namespace' => '\App\Http\Controllers\Admin'], function () {
+
+
+    Route::prefix('/admin')->group(function () {
+        Route::get('/post', IndexController::class)->name('admin.post.index');
+    });
+});
 
 
 
