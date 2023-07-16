@@ -7,6 +7,7 @@
   <link rel="stylesheet" type="text/css" href="{{ url('/build/assets/app-bbd6a014.css') }}" />
   <link rel="stylesheet" type="text/css" href="{{ url('/build/assets/app-66e7f68a.js') }}" /> 
   <link rel="stylesheet" type="text/css" href="{{ url('/css/general.css') }}"/>
+  <script src="https://kit.fontawesome.com/b27aa288b9.js" crossorigin="anonymous"></script>
   {{-- style="background-color: bisque; border-radius: 20px;" --}}
 </head>
 <body class="general">
@@ -19,6 +20,7 @@
                                         <a class="nav-link" href="/posts/create">Создание статьи</a>
                                         <a class="nav-link" href="/about">О нас</a>
                                         <a class="nav-link" href="/contacts">Контакты</a>
+                                        <a class="nav-link" href="/home">Вход</a>
                                 </div>
                         </div>
                 </div>

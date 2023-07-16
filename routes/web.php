@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Post\IndexController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,10 +19,10 @@ use Illuminate\Support\Facades\Route;
 // MAIN ROUTES
 
 Route::get('/', 'App\Http\Controllers\MainController@main'
-);
+)->name('main');
 
 Route::get('/main', 'App\Http\Controllers\MainController@main'
-);
+)->name('main');
 
 // POSTS ROUTES
 
@@ -68,7 +69,7 @@ Route::get('/contacts', 'App\Http\Controllers\ContactsController@contacts'
 Route::group(['namespace' => '\App\Http\Controllers\Admin'], function () {
 
 
-    Route::prefix('/admin')->group(function () {
+    Route::prefix('/admin')->middleware('admin')->group(function () {
         Route::get('/post', IndexController::class)->name('admin.post.index');
     });
 });
@@ -78,3 +79,7 @@ Route::group(['namespace' => '\App\Http\Controllers\Admin'], function () {
 
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

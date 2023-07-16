@@ -28,7 +28,10 @@
                             <div class="card-body">
                                 <p class="card-text">{{$post->post_content}}</p>
                             </div>
-                            <div class="likes">{{$post->likes}}</div>
+                            <div class="likes">
+                                {{$post->likes}}
+                                <i class="fa-sharp fa-solid fa-thumbs-up"></i>
+                            </div>
                         </div>
                     </a>
                 @endforeach
